@@ -5,10 +5,12 @@ import org.launchcode.pipedream.service.RestroomService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/restroom")
 public class RestroomController {
@@ -29,33 +31,40 @@ public class RestroomController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     List<Restroom> getAll(){
-        return restroomService.get();
+        return restroomService.getAll();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{id}")
     ResponseEntity<Restroom> get(@PathVariable Long id){
-        Optional<Restroom> restroomLocation = restroomService.get(id);
-        if (restroomLocation.isPresent()) {
-            return ResponseEntity.ok().body(restroomLocation.get());
+        Optional<Restroom> restroom = restroomService.get(id);
+        if (restroom.isPresent()) {
+            return ResponseEntity.ok().body(restroom.get());
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/restroom/{restroomId}")
+    List<Restroom> getByRestroomId(@PathVariable Long restroomId) {
+
+        return null;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping
     ResponseEntity<Restroom> update(@RequestBody Restroom newRestroom) {
-        Optional<Restroom> restroomLocation = restroomService.update(newRestroom);
-        if (restroomLocation.isPresent()) {
-            return ResponseEntity.ok().body(restroomLocation.get());
+        Optional<Restroom> restroom = restroomService.update(newRestroom);
+        if (restroom.isPresent()) {
+            return ResponseEntity.ok().body(restroom.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Long id) {
         if(restroomService.delete(id)){
             return ResponseEntity.ok().build();

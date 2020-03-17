@@ -4,6 +4,8 @@ import org.launchcode.pipedream.model.Restroom;
 import org.launchcode.pipedream.repository.RestroomRepository;
 import org.springframework.stereotype.Service;
 
+
+import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,11 +18,7 @@ public class RestroomService {
         this.restroomRepository = restroomRepository;
     }
 
-    public Restroom add(Restroom restroom){
-        return restroomRepository.save(restroom);
-    }
-
-    public List<Restroom> get() {
+    public List<Restroom> getAll() {
         return restroomRepository.findAll();
     }
 
@@ -28,13 +26,19 @@ public class RestroomService {
         return restroomRepository.findById(id);
     }
 
-    public Optional<Restroom> update (Restroom restroomLocation){
-        if(restroomRepository.existsById(restroomLocation.getId())){
-            restroomRepository.save(restroomLocation);
-            return Optional.of(restroomLocation);
+    public Restroom add(Restroom restroom){
+        return restroomRepository.save(restroom);
+    }
+
+
+    public Optional<Restroom> update (Restroom restroom) {
+        if(restroomRepository.existsById(restroom.getId())){
+            restroomRepository.save(restroom);
+            return Optional.of(restroom);
         }
         return Optional.empty();
     }
+
     public boolean delete(Long id){
         if(restroomRepository.existsById(id)){
             restroomRepository.deleteById(id);
