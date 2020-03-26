@@ -17,16 +17,21 @@ public class Restroom {
     @Column(name="id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name="businessName")
+    private String businessName;
+
+    @Column(name="businessType")
+    private String businessType;
+
+    @Column(name="isAccessible")
+    private boolean isAccessible;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "business")
-    private String business;
-
     @Column(name = "rating")
     private Integer rating;
+
+
 }
 
