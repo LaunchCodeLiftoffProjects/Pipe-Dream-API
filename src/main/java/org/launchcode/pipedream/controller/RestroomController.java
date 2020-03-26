@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3000")
+
+@CrossOrigin(origins={"http://localhost:3000"})
 @RestController
 @RequestMapping("/restroom")
 public class RestroomController {
@@ -20,21 +21,22 @@ public class RestroomController {
     public RestroomController(RestroomService restroomService){
         this.restroomService = restroomService;
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     Restroom add(@RequestBody Restroom restroom){
         return restroomService.add(restroom);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     List<Restroom> getAll(){
         return restroomService.getAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins={"http://localhost:3000"})
     @GetMapping("/{id}")
     ResponseEntity<Restroom> get(@PathVariable Long id){
         Optional<Restroom> restroom = restroomService.get(id);
@@ -52,7 +54,7 @@ public class RestroomController {
         return null;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @PutMapping
     ResponseEntity<Restroom> update(@RequestBody Restroom newRestroom) {
         Optional<Restroom> restroom = restroomService.update(newRestroom);
@@ -63,7 +65,7 @@ public class RestroomController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Long id) {
         if(restroomService.delete(id)){
