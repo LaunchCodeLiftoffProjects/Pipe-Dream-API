@@ -32,6 +32,9 @@ public class Restroom {
     @Column(name="changingTable")
     private Boolean changingTable;
 
+    @Column(name="isSingleStall")
+    private Boolean isSingleStall;
+
     @Column(name = "address")
     private String address;
 
