@@ -24,7 +24,13 @@ public class Restroom {
     private String businessType;
 
     @Column(name="isAccessible")
-    private boolean isAccessible;
+    private Boolean isAccessible;
+
+    @Column(name="genderNeutral")
+    private Boolean genderNeutral;
+
+    @Column(name="changingTable")
+    private Boolean changingTable;
 
     @Column(name = "address")
     private String address;
