@@ -2,7 +2,6 @@ package org.launchcode.pipedream.controller;
 
 import org.launchcode.pipedream.model.Restroom;
 import org.launchcode.pipedream.service.RestroomService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/restroom")
 public class RestroomController {
-
 
     private RestroomService restroomService;
 
@@ -55,6 +53,12 @@ public class RestroomController {
 
         return null;
     }
+    ///////////////////////////////////////
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("business/{businessName}")
+    List<Restroom> getByBusinessName(@PathVariable String businessName){
+        return restroomService.getByBusinessName(businessName);
+    }
 
     @CrossOrigin(origins = {"http://localhost:3000"})
     @PutMapping
@@ -76,7 +80,4 @@ public class RestroomController {
         return ResponseEntity.notFound().build();
     }
 }
-
-
-
 
