@@ -55,8 +55,8 @@ public class RestroomController {
     }
 
     @CrossOrigin(origins = {"http://localhost:3000"})
-    @PutMapping
-    ResponseEntity<Restroom> update(@RequestBody Restroom newRestroom) {
+    @PutMapping("/{id}")
+    ResponseEntity<Restroom> update(@PathVariable Long id, @RequestBody Restroom newRestroom) {
         Optional<Restroom> restroom = restroomService.update(newRestroom);
         if (restroom.isPresent()) {
             return ResponseEntity.ok().body(restroom.get());

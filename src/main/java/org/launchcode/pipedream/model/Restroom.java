@@ -26,11 +26,11 @@ public class Restroom {
     @Column(name="isAccessible")
     private Boolean isAccessible;
 
-    @Column(name="genderNeutral")
-    private Boolean genderNeutral;
+    @Column(name="isGenderNeutral")
+    private Boolean isGenderNeutral;
 
-    @Column(name="changingTable")
-    private Boolean changingTable;
+    @Column(name="hasChangingTable")
+    private Boolean hasChangingTable;
 
     @Column(name="isSingleStall")
     private Boolean isSingleStall;
@@ -41,6 +41,8 @@ public class Restroom {
     @Column(name = "rating")
     private Integer rating;
 
-
+    public Long getId() {
+        return id;
+    }
 }
 
