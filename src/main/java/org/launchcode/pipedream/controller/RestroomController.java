@@ -53,6 +53,12 @@ public class RestroomController {
 
         return null;
     }
+    ///////////////////////////////////////
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("business/{businessName}")
+    List<Restroom> getByBusinessName(@PathVariable String businessName){
+        return restroomService.getByBusinessName(businessName);
+    }
 
     @CrossOrigin(origins = {"http://localhost:3000"})
     @PutMapping
@@ -74,7 +80,4 @@ public class RestroomController {
         return ResponseEntity.notFound().build();
     }
 }
-
-
-
 

@@ -25,7 +25,10 @@ public class RestroomService {
     public Optional<Restroom> get(Long id){
         return restroomRepository.findById(id);
     }
-
+////////////////////////////////////////////////////////////////
+    public List<Restroom> getByBusinessName(String businessName){
+        return restroomRepository.findByBusinessName(businessName);
+    }
     public Restroom add(Restroom restroom){
         return restroomRepository.save(restroom);
     }
