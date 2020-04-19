@@ -48,7 +48,7 @@ public class RestroomController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/restroom/{restroomId}")
+    @GetMapping("/restrooms/{restroomId}")
     List<Restroom> getByRestroomId(@PathVariable Long restroomId) {
 
         return null;
