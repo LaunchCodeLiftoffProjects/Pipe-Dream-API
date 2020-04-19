@@ -26,10 +26,10 @@ public class Restroom {
     @Column(name="isAccessible")
     private Boolean isAccessible;
 
-    @Column(name="genderNeutral")
+    @Column(name="isGenderNeutral")
     private Boolean genderNeutral;
 
-    @Column(name="changingTable")
+    @Column(name="hasChangingTable")
     private Boolean changingTable;
 
     @Column(name="isSingleStall")
