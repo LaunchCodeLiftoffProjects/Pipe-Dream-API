@@ -1,4 +1,4 @@
-package org.launchcode.workforce.service;
+package org.launchcode.pipedream.service;
 
 import org.launchcode.pipedream.model.Review;
 import org.launchcode.pipedream.repository.ReviewRepository;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientsJobsService {
+public class ReviewService {
 
     private ReviewRepository reviewRepository;
 
@@ -25,30 +25,25 @@ public class ClientsJobsService {
         return reviewRepository.findById(id);
     }
 
-    ///////////////left off here!!!!!!!!!!!
-    public List<ClientsJobs> getByLocation(Long id) {
-        return clientsJobsRepository.findByLocationId(id);
+    public List<Review> getByRestroom(Long id) {
+        return reviewRepository.findByRestroomId(id);
     }
 
-    public List<ClientsJobs> getByClient(Long id) {
-        return clientsJobsRepository.findByClientId(id);
+    public Review add(Review review) {
+        return reviewRepository.save(review);
     }
 
-    public ClientsJobs add(ClientsJobs clientsJobs) {
-        return clientsJobsRepository.save(clientsJobs);
-    }
-
-    public Optional<ClientsJobs> update(ClientsJobs clientsJobs) {
-        if(clientsJobsRepository.existsById(clientsJobs.getId())){
-            clientsJobsRepository.save(clientsJobs);
-            return Optional.of(clientsJobs);
+    public Optional<Review> update(Review review) {
+        if(reviewRepository.existsById(review.getId())){
+            reviewRepository.save(review);
+            return Optional.of(review);
         }
         return Optional.empty();
     }
 
     public boolean delete(Long id) {
-        if (clientsJobsRepository.existsById(id)) {
-            clientsJobsRepository.deleteById(id);
+        if (reviewRepository.existsById(id)) {
+            reviewRepository.deleteById(id);
             return true;
         }
         return false;
