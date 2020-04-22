@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins={"http://localhost:3000"})
 @RestController
-@RequestMapping("/restroom")
+@RequestMapping("/restrooms")
 public class RestroomController {
 
     private RestroomService restroomService;
@@ -48,7 +48,7 @@ public class RestroomController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/restroom/{restroomId}")
+    @GetMapping("/restrooms/{restroomId}")
     List<Restroom> getByRestroomId(@PathVariable Long restroomId) {
 
         return null;
@@ -61,8 +61,8 @@ public class RestroomController {
     }
 
     @CrossOrigin(origins = {"http://localhost:3000"})
-    @PutMapping
-    ResponseEntity<Restroom> update(@RequestBody Restroom newRestroom) {
+    @PutMapping("/{id}")
+    ResponseEntity<Restroom> update(@PathVariable Long id, @RequestBody Restroom newRestroom) {
         Optional<Restroom> restroom = restroomService.update(newRestroom);
         if (restroom.isPresent()) {
             return ResponseEntity.ok().body(restroom.get());

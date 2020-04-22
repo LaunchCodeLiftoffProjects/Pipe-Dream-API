@@ -27,10 +27,10 @@ public class Restroom {
     private Boolean isAccessible;
 
     @Column(name="isGenderNeutral")
-    private Boolean genderNeutral;
+    private Boolean isGenderNeutral;
 
     @Column(name="hasChangingTable")
-    private Boolean changingTable;
+    private Boolean hasChangingTable;
 
     @Column(name="isSingleStall")
     private Boolean isSingleStall;
@@ -41,6 +41,12 @@ public class Restroom {
     @Column(name = "rating")
     private Integer rating;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 
