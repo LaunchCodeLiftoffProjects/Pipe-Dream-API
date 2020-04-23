@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins={"http://localhost:3000"})
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/restrooms/reviews")
 public class ReviewController {
 
     private ReviewService reviewService;
@@ -21,18 +21,21 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @PostMapping
+    @CrossOrigin(origins = {"http://localhost:3000"})
+    @PostMapping("/restrooms/reviews")
     @ResponseStatus(HttpStatus.OK)
     Review add(@RequestBody Review review) {
         return reviewService.add(review);
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     List<Review> getAll() {
         return reviewService.getAll();
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @GetMapping("/{id}")
     ResponseEntity<Review> get(@PathVariable Long id) {
         Optional<Review> review = reviewService.get(id);
@@ -44,12 +47,13 @@ public class ReviewController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/restroom/{restroomId}")
+    @GetMapping("/restrooms/{restroomId}")
     List<Review> getByRestroom(@PathVariable Long restroomId) {
         return reviewService.getByRestroom(restroomId);
     }
 
 
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @PutMapping
     ResponseEntity<Review> update(@RequestBody Review newReview) {
         Optional<Review> review = reviewService.update(newReview);
@@ -60,6 +64,7 @@ public class ReviewController {
         }
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000"})
     @DeleteMapping("/{id}")
     ResponseEntity<String> delete(@PathVariable Long id) {
         if (reviewService.delete(id)) {
