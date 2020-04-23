@@ -30,4 +30,7 @@ public class Review {
     @Column(name="restroomId")
     private Long restroomId;
 
+    public Long getId() {
+        return id;
+    }
 }
