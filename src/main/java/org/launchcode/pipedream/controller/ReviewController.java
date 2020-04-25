@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins={"http://localhost:3000"})
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/reviews/{restroomId}")
 public class ReviewController {
 
     private ReviewService reviewService;
@@ -33,7 +33,7 @@ public class ReviewController {
         return reviewService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     ResponseEntity<Review> get(@PathVariable Long id) {
         Optional<Review> review = reviewService.get(id);
         if (review.isPresent()) {
@@ -49,7 +49,7 @@ public class ReviewController {
         return reviewService.getByRestroom(restroomId);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     ResponseEntity<Review> update(@RequestBody Review newReview) {
         Optional<Review> review = reviewService.update(newReview);
         if (review.isPresent()) {
@@ -58,7 +58,7 @@ public class ReviewController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @DeleteMapping("/{id}")
     ResponseEntity<String> delete(@PathVariable Long id) {
         if (reviewService.delete(id)) {
