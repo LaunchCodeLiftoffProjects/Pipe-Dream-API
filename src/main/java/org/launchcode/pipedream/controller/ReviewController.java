@@ -21,21 +21,18 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000"})
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     Review add(@RequestBody Review review) {
         return reviewService.add(review);
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000"})
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     List<Review> getAll() {
         return reviewService.getAll();
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000"})
     @GetMapping("/{id}")
     ResponseEntity<Review> get(@PathVariable Long id) {
         Optional<Review> review = reviewService.get(id);
@@ -52,8 +49,6 @@ public class ReviewController {
         return reviewService.getByRestroom(restroomId);
     }
 
-
-    @CrossOrigin(origins = {"http://localhost:3000"})
     @PutMapping
     ResponseEntity<Review> update(@RequestBody Review newReview) {
         Optional<Review> review = reviewService.update(newReview);
@@ -63,8 +58,7 @@ public class ReviewController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @CrossOrigin(origins = {"http://localhost:3000"})
+    
     @DeleteMapping("/{id}")
     ResponseEntity<String> delete(@PathVariable Long id) {
         if (reviewService.delete(id)) {
