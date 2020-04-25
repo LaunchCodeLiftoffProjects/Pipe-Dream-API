@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins={"http://localhost:3000"})
 @RestController
-@RequestMapping("/restrooms/reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     private ReviewService reviewService;
@@ -22,7 +22,7 @@ public class ReviewController {
     }
 
     @CrossOrigin(origins = {"http://localhost:3000"})
-    @PostMapping("/restrooms/reviews")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     Review add(@RequestBody Review review) {
         return reviewService.add(review);
