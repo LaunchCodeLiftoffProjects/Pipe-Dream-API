@@ -44,11 +44,10 @@ public class ReviewController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/restroom/{restroomId}")
+    @GetMapping("/restrooms/{restroomId}")
     List<Review> getByRestroom(@PathVariable Long restroomId) {
         return reviewService.getByRestroom(restroomId);
     }
-
 
     @PutMapping
     ResponseEntity<Review> update(@RequestBody Review newReview) {
@@ -59,7 +58,7 @@ public class ReviewController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    
     @DeleteMapping("/{id}")
     ResponseEntity<String> delete(@PathVariable Long id) {
         if (reviewService.delete(id)) {
